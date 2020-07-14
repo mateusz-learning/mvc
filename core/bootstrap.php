@@ -6,14 +6,18 @@ require_once(ROOT . DS . 'app' . DS . 'lib' . DS . 'helpers' . DS . 'functions.p
 
 //Autoload classess
 function my_autoloader($class) {
-  if (file_exists(ROOT . DS . 'core' . DS . $class . '.php')) {
-    require_once(ROOT . DS . 'core' . DS . $class . '.php');
+  $core_class_path = ROOT . DS . 'core' . DS . $class . '.php';
+  $controllers_class_path = ROOT . DS . 'app' . DS . 'controllers' . DS . $class . '.php';
+  $models_class_path = ROOT . DS . 'app' . DS . 'models' . DS . $class . '.php';
+
+  if (file_exists($core_class_path)) {
+    require_once($core_class_path);
   }
-  elseif (file_exists(ROOT . DS . 'app' . DS . 'controllers' . DS . $class . '.php')) {
-    require_once(ROOT . DS . 'app' . DS . 'controllers' . DS . $class . '.php');
+  elseif (file_exists($controllers_class_path)) {
+    require_once($controllers_class_path);
   }
-  elseif (file_exists(ROOT . DS . 'app' . DS . 'models' . DS . $class . '.php')) {
-    require_once(ROOT . DS . 'app' . DS . 'models' . DS . $class . '.php');
+  elseif (file_exists($models_class_path)) {
+    require_once($models_class_path);
   }
 }
 
