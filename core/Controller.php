@@ -13,6 +13,4 @@ class Controller extends Application
     $this->_action = $action;
     $this->view = new View();
   }
-
-
 }
