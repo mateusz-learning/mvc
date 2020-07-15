@@ -8,7 +8,8 @@ class Home extends Controller
     parent::__construct($controller, $action);
   }
 
-  public function indexAction() {
-    die('Welcome to the home controller this is the index action.');
+  public function indexAction($name) {
+    print $name;
+    $this->view->render('home/index');
   }
 }
