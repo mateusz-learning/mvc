@@ -15,7 +15,7 @@ class View {
 
     if (file_exists(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php')) {
       include (ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php');
-//      include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
+      include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
     }
     else {
       die('The view \"' . $viewName . '\" does not exist.');
@@ -51,7 +51,7 @@ class View {
     }
   }
 
-  public function siteTile() {
+  public function siteTitle() {
     if ($this->_siteTitle == '') {
       return SITE_TITLE;
     }

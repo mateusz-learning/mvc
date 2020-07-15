@@ -14,6 +14,9 @@ class Router {
     array_shift($url);
 
     //params
+    if (count($url) == 0) {
+      $url[] = '';
+    }
     $queryParams = $url;
 
     $dispatch = new $controller($controller_name, $action);
