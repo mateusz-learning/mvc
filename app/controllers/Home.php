@@ -9,6 +9,14 @@ class Home extends Controller
   }
 
   public function indexAction() {
+    $db = DB::getInstance();
+    $contacts = $db->find('contacts', [
+      'conditions' => ['lname' => '?', 'fname' => 'Curtis'],
+      'bind' => ['Parhman'],
+      'order' => "lname, fname",
+      'limit' => 5
+    ]);
+    dnd($contacts);
     $this->view->render('home/index');
   }
 }

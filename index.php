@@ -29,4 +29,5 @@ session_start();
 
 //$url - Array website address parameters
 $url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : [];
+
 Router::route($url);
