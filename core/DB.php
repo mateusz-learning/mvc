@@ -5,10 +5,8 @@ class DB {
   private static $_instance = null;
   private $_pdo, $_query, $_error = false, $_result, $_count = 0, $_lastInsertID = null;
 
-  private function __construct()
-  {
+  private function __construct() {
     try {
-//      $this->_pdo = new PDO(DB_HOST, DB_USER, DB_PASSWORD);
       $this->_pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
     }
     catch(PDOException $e) {
@@ -27,7 +25,7 @@ class DB {
   public function query($sql, $params = []) {
     $this->_error = false;
 
-    if ($this->_query = $this->_pdo->prepare($sql)) { //to check and learn
+    if ($this->_query = $this->_pdo->prepare($sql)) {
       $x = 1;
 
       if (count($params)) {
@@ -67,6 +65,7 @@ class DB {
       else {
         $conditionString = $params['conditions'];
       }
+
       if ($conditionString != '') {
         $conditionString = ' Where ' . $conditionString;
       }
@@ -123,6 +122,7 @@ class DB {
       $valueString .= '?,';
       $values[] = $value;
     }
+
     $fieldString = rtrim($fieldString, ',');
     $valueString = rtrim($valueString, ',');
     $sql = "INSERT INTO {$table} ({$fieldString}) VALUES ({$valueString})";
